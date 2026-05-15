@@ -3,30 +3,22 @@
 :root {
   /* Light Theme Palette */
   --clr-bg-main: #f3f4f6;
-  /* Main dashboard background */
   --clr-bg-surface: #ffffff;
-  /* Card and sidebar background */
   --clr-bg-alt: #f8fafc;
-  /* Alternative background for hover/tables */
 
   --clr-text-main: #0f172a;
-  /* Primary dark text */
   --clr-text-muted: #64748b;
-  /* Secondary muted text */
 
   --clr-border: #e2e8f0;
-  /* Light borders */
   --clr-border-focus: #cbd5e1;
 
   /* Brand Colors and Actions */
   --clr-primary: #4f46e5;
-  /* Indigo */
   --clr-primary-hover: #4338ca;
   --clr-primary-light: #e0e7ff;
 
   --clr-secondary: #ffffff;
   --clr-secondary-border: #cbd5e1;
-
   --clr-white: #ffffff;
 
   /* Status Colors */
@@ -188,41 +180,18 @@ body {
 }
 
 /* TYPOGRAPHY */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   color: var(--clr-text-main);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
-h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-}
-
-h4 {
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-h5 {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
+h1 { font-size: 2.5rem; font-weight: 800; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; font-weight: 600; }
+h5 { font-size: 1.1rem; font-weight: 600; }
 h6 {
   font-size: 0.95rem;
   font-weight: 600;
@@ -277,22 +246,10 @@ small {
 }
 
 /* GRIDS AND LAYOUT */
-.grid {
-  display: grid;
-  gap: 1.5rem;
-}
-
-.grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-}
-
-.grid-4 {
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
+.grid { display: grid; gap: 1.5rem; }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 
 .flex {
   display: flex;
@@ -518,7 +475,6 @@ small {
   width: 100%;
 }
 
-/* Full centering without vertical alignment (top aligned) */
 .page-center-top {
   display: flex;
   justify-content: center;
@@ -631,6 +587,125 @@ small {
   cursor: pointer;
 }
 
+/* CALENDAR COMPONENT */
+.calendar {
+  background: var(--clr-bg-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.calendar-month {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--clr-text-main);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-day-name {
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+  text-transform: uppercase;
+  border-right: 1px solid var(--clr-border);
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.calendar-day-name:last-child {
+  border-right: none;
+}
+
+.calendar-day {
+  min-height: 120px;
+  padding: 0.75rem;
+  border-right: 1px solid var(--clr-border);
+  border-bottom: 1px solid var(--clr-border);
+  transition: background var(--transition-fast);
+}
+
+.calendar-day:nth-child(7n) {
+  border-right: none;
+}
+
+.calendar-day:hover {
+  background: var(--clr-bg-alt);
+}
+
+.calendar-date {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--clr-text-main);
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.calendar-date.inactive {
+  color: var(--clr-border-focus);
+}
+
+.calendar-date.today {
+  background: var(--clr-primary);
+  color: var(--clr-white);
+}
+
+.calendar-event {
+  background: var(--clr-primary-light);
+  border-left: 3px solid var(--clr-primary);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.calendar-event:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.event-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--clr-primary);
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+.event-prof,
+.event-class {
+  font-size: 0.75rem;
+  color: var(--clr-primary-hover);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.1rem;
+}
+
+.event-prof .material-symbols-outlined,
+.event-class .material-symbols-outlined {
+  font-size: 0.9rem;
+}
+
 /* BADGES */
 .badge {
   display: inline-flex;
@@ -679,29 +754,10 @@ small {
   box-shadow: var(--shadow-sm);
 }
 
-.alert-info {
-  background: var(--clr-info-bg);
-  border-color: var(--clr-info);
-  color: #1e3a8a;
-}
-
-.alert-success {
-  background: var(--clr-success-bg);
-  border-color: var(--clr-success);
-  color: #064e3b;
-}
-
-.alert-warning {
-  background: var(--clr-warning-bg);
-  border-color: var(--clr-warning);
-  color: #78350f;
-}
-
-.alert-error {
-  background: var(--clr-danger-bg);
-  border-color: var(--clr-danger);
-  color: #7f1d1d;
-}
+.alert-info { background: var(--clr-info-bg); border-color: var(--clr-info); color: #1e3a8a; }
+.alert-success { background: var(--clr-success-bg); border-color: var(--clr-success); color: #064e3b; }
+.alert-warning { background: var(--clr-warning-bg); border-color: var(--clr-warning); color: #78350f; }
+.alert-error { background: var(--clr-danger-bg); border-color: var(--clr-danger); color: #7f1d1d; }
 
 /* TABLES */
 .table-wrapper {
@@ -909,17 +965,8 @@ tbody tr:last-child td {
   box-shadow: var(--shadow-sm);
 }
 
-.avatar-sm {
-  width: 32px;
-  height: 32px;
-  font-size: 0.75rem;
-}
-
-.avatar-lg {
-  width: 56px;
-  height: 56px;
-  font-size: 1.2rem;
-}
+.avatar-sm { width: 32px; height: 32px; font-size: 0.75rem; }
+.avatar-lg { width: 56px; height: 56px; font-size: 1.2rem; }
 
 .tooltip {
   position: relative;
@@ -988,31 +1035,13 @@ tbody tr:last-child td {
   border-radius: var(--radius-sm);
 }
 
-.skeleton-text {
-  height: 14px;
-  margin-bottom: 0.6rem;
-}
-
-.skeleton-title {
-  height: 22px;
-  width: 60%;
-  margin-bottom: 1rem;
-}
-
-.skeleton-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
+.skeleton-text { height: 14px; margin-bottom: 0.6rem; }
+.skeleton-title { height: 22px; width: 60%; margin-bottom: 1rem; }
+.skeleton-avatar { width: 40px; height: 40px; border-radius: 50%; }
 
 @keyframes skeleton-pulse {
-  0% {
-    background-position: 200% 0;
-  }
-
-  100% {
-    background-position: -200% 0;
-  }
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 .list {
@@ -1030,69 +1059,25 @@ tbody tr:last-child td {
   border-radius: var(--radius-sm);
 }
 
-.list-item:hover {
-  background: var(--clr-bg-alt);
-}
-
-.list-item:last-child {
-  border-bottom: none;
-}
+.list-item:hover { background: var(--clr-bg-alt); }
+.list-item:last-child { border-bottom: none; }
 
 /* UTILITY CLASSES */
-.mt-1 {
-  margin-top: 0.5rem;
-}
-
-.mt-2 {
-  margin-top: 1rem;
-}
-
-.mt-3 {
-  margin-top: 1.5rem;
-}
-
-.mt-4 {
-  margin-top: 2rem;
-}
-
-.mb-1 {
-  margin-bottom: 0.5rem;
-}
-
-.mb-2 {
-  margin-bottom: 1rem;
-}
-
-.mb-3 {
-  margin-bottom: 1.5rem;
-}
-
-.mb-4 {
-  margin-bottom: 2rem;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.w-full {
-  width: 100%;
-}
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.w-full { width: 100%; }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-in {
@@ -1115,7 +1100,6 @@ tbody tr:last-child td {
 
   .sidebar-nav {
     display: none;
-    /* In a real layout, a hamburger menu would be implemented here */
   }
 
   .content-pad {
